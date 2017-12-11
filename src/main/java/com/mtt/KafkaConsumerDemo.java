@@ -22,7 +22,7 @@ public class KafkaConsumerDemo {
         properties.setProperty("value.deserializer", StringDeserializer.class.getName());
         properties.setProperty("group.id", "test");
         properties.setProperty("enable.auto.commit", "true");
-        properties.setProperty("auto.commit.interval.ms", "1000");
+        //properties.setProperty("auto.commit.interval.ms", "1000");
         properties.setProperty("auto.offset.reset", "earliest");
 
         KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<String, String>(properties);
@@ -45,6 +45,7 @@ public class KafkaConsumerDemo {
                         ", value: " + consumerRecord.value()
                 );
             }
+            kafkaConsumer.commitSync();
         }
 
 
